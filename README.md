@@ -1,2 +1,2 @@
 # itmo-magistracy
-educational materials for the period of study at ITMO
+Здесь собраны все практические работы, которые были выполнены за период обучения в магистратуре СППО ИТМО 
