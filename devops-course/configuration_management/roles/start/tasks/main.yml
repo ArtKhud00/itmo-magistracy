@@ -1,0 +1,8 @@
+---
+# tasks file for start
+- name: Try to start
+  shell: "{{ start_command }}"
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+
+

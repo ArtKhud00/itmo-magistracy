@@ -1,0 +1,13 @@
+---
+# tasks file for stop
+- stat:
+    path: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+  register: stat_current
+
+- name: Try to stop
+  shell: "{{ stop_command }}"
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+  # environment: "{{ ansible_env | combine(env|default({})) }}"
+  when: stat_current.stat.islnk is defined and stat_current.stat.islnk
+

@@ -1,0 +1,47 @@
+---
+# tasks file for deploy
+
+- name: Setup base folders
+  include_role:
+    name: ansistrano.deploy
+    tasks_from: setup
+
+- name: Install nginx
+  include_role:
+    name: ansistrano.deploy
+    tasks_from: update-code
+  vars:
+    ansistrano_deploy_via: download_unarchive
+    ansistrano_unarchive_extra_opts: [--strip-components=1] 
+    ansistrano_get_url: "{{ distrib_path }}" 
+
+- name: Copy all templates
+  ansible.builtin.template:
+    src: '{{ item.src }}'
+    dest: '{{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/{{ item.dst }}/{{ item.src | basename }}'
+  with_items: "{{ templates }}" 
+
+- name: Configure nginx make
+  shell:
+    ./configure \
+    --prefix={{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx \
+    --sbin-path={{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx/nginx \
+    --modules-path={{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx/modules \
+    --conf-path={{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx/conf/nginx.conf \
+    --pid-path={{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx/nginx.pid \
+    --error-log-path={{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx/logs/error.log \
+    --http-log-path={{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx/logs/access.log \
+    --with-pcre
+  args:
+    chdir: '{{ ansistrano_releases_path }}/{{ ansistrano_release_version }}'
+
+- name: Install nginx from make
+  shell: 'make install clean'
+  args:
+    chdir: '{{ ansistrano_releases_path }}/{{ ansistrano_release_version }}'
+
+- name: Copy nginxctl
+  ansible.builtin.copy:
+    src: 'files/nginxctl'
+    dest: '{{ ansistrano_releases_path }}/{{ ansistrano_release_version }}/nginx/nginxctl'
+    mode: 'a+x'

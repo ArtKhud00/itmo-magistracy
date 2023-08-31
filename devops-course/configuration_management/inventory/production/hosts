@@ -1,0 +1,9 @@
+[some_product:children]
+service_1
+service_2
+
+[service_1]
+service_1_host ansible_host={{u_prefix}}_production_{{inventory_hostname}}_1
+
+[service_2]
+service_2_host ansible_host={{u_prefix}}_production_{{inventory_hostname}}_1

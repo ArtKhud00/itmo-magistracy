@@ -1,0 +1,9 @@
+---
+# tasks file for start
+# - include_vars: "{{ playbook_dir }}/external/ansistrano.deploy/defaults/main.yml"
+
+- name: Try to start
+  shell: "{{ start_command }}"
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+  # environment: "{{ ansible_env | combine(env|default({})) }}"

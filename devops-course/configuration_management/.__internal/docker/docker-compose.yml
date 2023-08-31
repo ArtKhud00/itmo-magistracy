@@ -1,0 +1,33 @@
+---
+version: "3.6"
+services:
+  test_service_1_host:
+    image: "${__IMAG_TAG_NAME}"
+    ports:
+      - "9${__PORT_NUMBER_PART}1:9${__PORT_NUMBER_PART}1"
+    volumes:
+      - "test_service_1:/data/${__USER}"
+  test_service_2_host:
+    image: "${__IMAG_TAG_NAME}"
+    ports:
+      - "9${__PORT_NUMBER_PART}2:9${__PORT_NUMBER_PART}2"
+    volumes:
+      - "test_service_2:/data/${__USER}"
+  production_service_1_host:
+    image: "${__IMAG_TAG_NAME}"
+    ports:
+      - "7${__PORT_NUMBER_PART}1:7${__PORT_NUMBER_PART}1"
+    volumes:
+      - "production_service_1:/data/${__USER}"
+  production_service_2_host:
+    image: "${__IMAG_TAG_NAME}"
+    ports:
+      - "7${__PORT_NUMBER_PART}2:7${__PORT_NUMBER_PART}2"
+    volumes:
+      - "production_service_2:/data/${__USER}"
+
+volumes:
+  test_service_1:
+  test_service_2:
+  production_service_1:
+  production_service_2:

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to nginx-{{ nginx_version }}!</title>
+</head>
+<style>
+    html {
+        color-scheme: blue;
+    }
+
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .env {
+        color: blueviolet;
+        font-size: large;
+    }
+
+    .inv {
+        color: rosybrown;
+        font-size: medium;
+    }
+
+    .allser {
+        color: blue;
+        font-size: medium;
+    }
+
+    .ser {
+        color: black;
+        font-family: serif;
+    }
+</style>
+
+<body>
+    <h1>Welcome to nginx: {{ nginx_version }}</h1>
+    <p><b><span class="env">E </span>nvironment</b>: {{ deploy_environment }}</p>
+    <p><b><span class="inv">C</span>urrent inventory host</b>: {{ inventory_hostname }}</p>
+    <p><b><span class="allser">All</span> services</b>:</p>
+    <ol>
+        {% for item in all_services -%}
+        <li>
+            <span class="ser">{{ item }}</span>
+        </li>
+        {%- endfor %}
+        <hr>
+    </ol>
+</body>
+
+</html>

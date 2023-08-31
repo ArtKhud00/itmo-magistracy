@@ -1,0 +1,15 @@
+---
+- name: Deploy some product services
+  hosts: some_product
+  become_user: "{{ privilege_user }}"
+  become: true
+  roles:
+    - role: deploy
+      tags: deploy
+    - role: stop
+      tags: stop, restart, deploy
+    - role: synchronize
+      tags: synchronize, deploy
+    - role: start
+      tags: start, restart, deploy
+

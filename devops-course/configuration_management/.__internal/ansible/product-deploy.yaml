@@ -1,0 +1,27 @@
+---
+- name: Deploy some product services
+  hosts: some_product
+  become_user: "{{ privilege_user }}"
+  become: true
+  roles:
+    - role: deploy
+      tags: deploy
+    # - role: stop
+    #   tags: deploy, stop, restart
+    # - role: synchronize
+    #   tags: deploy, sync
+    # - role: start
+    #   tags: deploy, start, restart
+
+- name: Sync some product services
+  hosts: some_product
+  become_user: "{{ privilege_user }}"
+  serial: "{{ deploy_serial | default(0) }}"
+  become: true
+  roles:
+    - role: stop
+      tags: deploy, stop, restart
+    - role: synchronize
+      tags: deploy, sync
+    - role: start
+      tags: deploy, start, restart

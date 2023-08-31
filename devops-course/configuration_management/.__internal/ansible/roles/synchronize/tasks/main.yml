@@ -1,0 +1,6 @@
+---
+# tasks file for synchronize
+- name: Install nginx
+  include_role:
+    name: ansistrano.deploy
+    tasks_from: symlink

@@ -1,0 +1,12 @@
+- name: Rollback some product services
+  hosts: some_product
+  become_user: "{{ privilege_user }}"
+  serial: "{{ deploy_serial | default(0) }}"
+  become: true
+  roles:
+   - role: stop
+     tags: rollback, stop, restart
+   - role: ansistrano.rollback
+     tags: rollback, sync
+   - role: start
+     tags: rollback, start, restart

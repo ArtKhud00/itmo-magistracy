@@ -1,0 +1,15 @@
+---
+stop_command: "./nginx/nginxctl stop"
+start_command: "./nginx/nginxctl start"
+
+check_running:
+  checking_timeout: 10
+  ports_list:
+    - port: '{{ nginx_port }}'
+
+# Store in role or set playbook_dir
+templates:
+  - src: files/nginx.conf
+    dst: conf
+  - src: files/index.html
+    dst: html

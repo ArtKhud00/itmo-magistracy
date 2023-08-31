@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to nginx-{{ nginx_version }}!</title>
+</head>
+<style>
+    html {
+        color-scheme: light dark;
+    }
+
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+<body>
+
+    <h3>Welcome to nginx: {{ nginx_version }}</h1>
+
+
+    <ul>
+        <li>
+            <span><b>Environment</b>: {{ deploy_environment }}</span>
+        </li>
+        <li>
+            <span><b>Current inventory host</b>: {{ inventory_hostname }}</span>
+        </li>
+        <li>
+            <span><b>All services</b>:</span>
+            <ul>
+                {% for item in all_services -%}
+                <li>
+                    <span><b>{{ item }}</b></span>
+                </li>
+                {%- endfor %}
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+</html>

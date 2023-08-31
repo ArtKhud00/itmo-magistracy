@@ -1,0 +1,3 @@
+---
+ansible_connection: docker
+distrib_path: "https://nginx.org/download/nginx-{{ nginx_version }}.tar.gz"

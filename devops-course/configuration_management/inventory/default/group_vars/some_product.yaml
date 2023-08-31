@@ -1,0 +1,8 @@
+---
+nginx_version: 1.22.1
+ansistrano_deploy_to: '/data/{{ privilege_user }}/some_service_{{service_id}}'
+
+all_services: "{{ groups['some_product'] | map('extract', hostvars, 'ansible_host') | reject('contains', inventory_hostname) | list }}"
+
+#nginx_port: "{% if deploy_environment == 'test' %}9{% else %}7{% endif %}{{ privilege_user | regex_replace('.*?(\\d+)$', '\\1') }}{{ ansible_host | regex_replace('.*?(\\d+)$', '\\1') }}"
+nginx_port: "{% if deploy_environment == 'test' %}9{% else %}7{% endif %}{{ privilege_user | regex_replace('.*?(\\d+)$', '\\1') }}{{ service_id }}"
