@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"lab3potent_adc\startup_stm32l152xb.o"
+"lab3potent_adc\main.o"
+"lab3potent_adc\stm32l1xx_it.o"
+"lab3potent_adc\stm32l1xx_hal_msp.o"
+"lab3potent_adc\stm32l1xx_hal_adc.o"
+"lab3potent_adc\stm32l1xx_hal_adc_ex.o"
+"lab3potent_adc\stm32l1xx_hal.o"
+"lab3potent_adc\stm32l1xx_hal_rcc.o"
+"lab3potent_adc\stm32l1xx_hal_rcc_ex.o"
+"lab3potent_adc\stm32l1xx_hal_flash.o"
+"lab3potent_adc\stm32l1xx_hal_flash_ex.o"
+"lab3potent_adc\stm32l1xx_hal_flash_ramfunc.o"
+"lab3potent_adc\stm32l1xx_hal_gpio.o"
+"lab3potent_adc\stm32l1xx_hal_dma.o"
+"lab3potent_adc\stm32l1xx_hal_pwr.o"
+"lab3potent_adc\stm32l1xx_hal_pwr_ex.o"
+"lab3potent_adc\stm32l1xx_hal_cortex.o"
+"lab3potent_adc\stm32l1xx_hal_exti.o"
+"lab3potent_adc\stm32l1xx_hal_tim.o"
+"lab3potent_adc\stm32l1xx_hal_tim_ex.o"
+"lab3potent_adc\system_stm32l1xx.o"
+--strict --scatter "Lab3Potent_ADC\Lab3Potent_ADC.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Lab3Potent_ADC.map" -o Lab3Potent_ADC\Lab3Potent_ADC.axf

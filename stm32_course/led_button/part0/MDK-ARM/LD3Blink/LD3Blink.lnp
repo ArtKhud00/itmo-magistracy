@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"ld3blink\startup_stm32l152xb.o"
+"ld3blink\main.o"
+"ld3blink\stm32l1xx_it.o"
+"ld3blink\stm32l1xx_hal_msp.o"
+"ld3blink\stm32l1xx_hal_tim.o"
+"ld3blink\stm32l1xx_hal_tim_ex.o"
+"ld3blink\stm32l1xx_hal.o"
+"ld3blink\stm32l1xx_hal_rcc.o"
+"ld3blink\stm32l1xx_hal_rcc_ex.o"
+"ld3blink\stm32l1xx_hal_flash.o"
+"ld3blink\stm32l1xx_hal_flash_ex.o"
+"ld3blink\stm32l1xx_hal_flash_ramfunc.o"
+"ld3blink\stm32l1xx_hal_gpio.o"
+"ld3blink\stm32l1xx_hal_dma.o"
+"ld3blink\stm32l1xx_hal_pwr.o"
+"ld3blink\stm32l1xx_hal_pwr_ex.o"
+"ld3blink\stm32l1xx_hal_cortex.o"
+"ld3blink\stm32l1xx_hal_exti.o"
+"ld3blink\system_stm32l1xx.o"
+--strict --scatter "LD3Blink\LD3Blink.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "LD3Blink.map" -o LD3Blink\LD3Blink.axf

@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"lab2_breath\startup_stm32l152xb.o"
+"lab2_breath\main.o"
+"lab2_breath\stm32l1xx_it.o"
+"lab2_breath\stm32l1xx_hal_msp.o"
+"lab2_breath\stm32l1xx_hal_tim.o"
+"lab2_breath\stm32l1xx_hal_tim_ex.o"
+"lab2_breath\stm32l1xx_hal.o"
+"lab2_breath\stm32l1xx_hal_rcc.o"
+"lab2_breath\stm32l1xx_hal_rcc_ex.o"
+"lab2_breath\stm32l1xx_hal_flash.o"
+"lab2_breath\stm32l1xx_hal_flash_ex.o"
+"lab2_breath\stm32l1xx_hal_flash_ramfunc.o"
+"lab2_breath\stm32l1xx_hal_gpio.o"
+"lab2_breath\stm32l1xx_hal_dma.o"
+"lab2_breath\stm32l1xx_hal_pwr.o"
+"lab2_breath\stm32l1xx_hal_pwr_ex.o"
+"lab2_breath\stm32l1xx_hal_cortex.o"
+"lab2_breath\stm32l1xx_hal_exti.o"
+"lab2_breath\system_stm32l1xx.o"
+--strict --scatter "LAB2_Breath\LAB2_Breath.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "LAB2_Breath.map" -o LAB2_Breath\LAB2_Breath.axf
